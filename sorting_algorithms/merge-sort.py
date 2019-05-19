@@ -1,4 +1,12 @@
 def merge(array, aux, left, mid, right):
+    """
+    Procedure used in merge sort, array is sorted from left to mid and then from mid + 1 to right
+    :param array: input array of integers
+    :param aux: auxiliary helper array of 0's, same length as input array
+    :param left: left index of array
+    :param mid: middle index of array
+    :param right: right index of array
+    """
     for k in range(left, right + 1):
         aux[k] = array[k]
 
@@ -21,11 +29,18 @@ def merge(array, aux, left, mid, right):
 
 
 def merge_sort(array, aux, left, right):
+    """
+    Implementation of merge sort
+    :param array: input array of integers
+    :param aux: auxiliary helper array of 0's, same length as input array
+    :param left: left index of array
+    :param right: right index of array
+    """
     if left == right:
         return
-    middle = (left + right) // 2
+    mid = (left + right) // 2
 
-    merge_sort(array, aux, left, middle)
-    merge_sort(array, aux, middle + 1, right)
+    merge_sort(array, aux, left, mid)
+    merge_sort(array, aux, mid + 1, right)
 
-    merge(array, aux, left, middle, right)
+    merge(array, aux, left, mid, right)
